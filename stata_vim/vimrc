@@ -3,6 +3,11 @@
 " requiere script rundo.sh 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Añadidos para STATA
+" requiere script rundo.sh 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "" STATA DO-FILE SCRIPTS
 
 fun! RunIt()
@@ -10,7 +15,7 @@ fun! RunIt()
   "adjust this path to the bash script
   !sh "/home/user/.rundo.sh" "%:p"
 endfun
-au FileType stata noremap <F8> :<C-U>call RunIt()<CR><CR>
+au FileType stata noremap <F12> :<C-U>call RunIt()<CR><CR>
 
 fun! RunDoLines()
   let selectedLines = getbufline('%', line("'<"), line("'>"))
@@ -27,5 +32,5 @@ fun! RunDoLines()
     "au VimLeave * exe "!del -y" temp
     au VimLeave * silent exe '!del /Q "'.$TEMP.'\*.tmp.do"'
 endfun
-au FileType stata noremap <F9> :<C-U>call RunDoLines()<CR><CR> 
+au FileType stata noremap <F11> :<C-U>call RunDoLines()<CR><CR> 
 
