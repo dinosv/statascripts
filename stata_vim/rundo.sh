@@ -10,7 +10,7 @@ echo 'do ' '"'$1'"' | xsel -b
 
 # get current window id
 winedit=`xdotool getwindowfocus`
-winstata=`xdotool search "Stata/SE 12.1" | head -1`
+winstata=`xdotool search "Stata/SE 15.1" | head -1`
 
 # check for stata window, if found activate else execute
 # use correct version here
@@ -18,7 +18,7 @@ if [ "$(pgrep stata)" ]
 then
    xdotool windowactivate --sync $winstata
 else
-    /usr/local/stata12/xstata-se &
+    /usr/local/stata15/xstata-se &
     sleep 1s 
 fi
 
@@ -30,11 +30,10 @@ sleep .1
 # and select existing text via ctrl-a
 xte 'keydown Control_L' 'key 1' 'key A' 'usleep 100' \
     'key V' 'keyup Control_L' 
-sleep .4
+sleep 1 
 xte 'key Return'
-sleep .5
-
+sleep 1
 
 # go back to editor window
-xdotool windowactivate --sync $winedit
+#xdotool windowactivate --sync $winedit
 
